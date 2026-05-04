@@ -54,7 +54,7 @@ export default function Login() {
       {/* CARD DE LOGIN (z-10 para ficar acima do fundo) */}
       <div className="relative z-10 bg-black/40 backdrop-blur-xl p-8 rounded-2xl border border-white/10 w-full max-w-md shadow-[0_0_40px_rgba(150,0,255,0.15)]">
         <h2 className="text-3xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-8 tracking-tight">
-          Acesso Restrito
+          Painel Administrativo
         </h2>
         
         {error && <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-lg mb-6 text-sm text-center backdrop-blur-md">{error}</div>}
