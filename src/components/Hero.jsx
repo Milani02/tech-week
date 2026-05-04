@@ -1,7 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+// NOVO: Importando o hook de navegação
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
   const { scrollY } = useScroll();
+  // NOVO: Inicializando o navigate
+  const navigate = useNavigate();
 
   // DEFININDO O EFEITO PARALAXE
   const yTitle = useTransform(scrollY, [0, 1000], [0, 400]);
@@ -11,7 +15,7 @@ export default function Hero() {
 
   const opacityText = useTransform(scrollY, [0, 600], [1, 0]);
   
-  // NOVO: Faz o indicador de Scroll sumir rápido assim que a rolagem começa
+  // Faz o indicador de Scroll sumir rápido assim que a rolagem começa
   const opacityScroll = useTransform(scrollY, [0, 200], [1, 0]);
 
   return (
@@ -82,6 +86,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-6 relative"
         >
           <div className="absolute inset-0 bg-surreal-cyan blur-3xl opacity-20 rounded-full"></div>
+          
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -93,17 +98,19 @@ export default function Hero() {
             </span>
           </motion.button>
           
+          {/* NOVO: Transformamos o botão secundário no botão de Login usando o onClick com navigate */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/login')}
             className="px-10 py-5 rounded-full font-bold text-lg glass-panel hover:bg-white/10 transition-colors duration-300 border border-white/10"
           >
-            Ver Manifesto
+            Painel Admin
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Indicador de Scroll Animado - Envolvido em um controlador de opacidade dinâmico */}
+      {/* Indicador de Scroll Animado */}
       <motion.div 
         style={{ opacity: opacityScroll }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 pointer-events-none"

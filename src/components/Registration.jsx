@@ -52,7 +52,7 @@ export default function Registration() {
 
           <div className="text-center mb-10">
             <h2 className="text-4xl font-black text-white tracking-tight leading-none mb-3">
-              Garante sua Conexão
+              Garanta sua inscrição
             </h2>
             <p className="text-gray-400 max-w-lg mx-auto">Escolha o seu ponto de entrada para a Tech Week 2026. A conexão com o futuro começa aqui.</p>
           </div>
