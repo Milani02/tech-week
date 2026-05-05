@@ -129,7 +129,7 @@ export default function InfoSections() {
           <div className="absolute inset-0 bg-gradient-to-r from-surreal-cyan via-surreal-purple to-surreal-magenta opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
           
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14668.646543168233!2d-51.1610!3d-23.2915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1714340000000!5m2!1spt-BR!2sbr" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.3327064247605!2d-51.143334423921836!3d-23.303684452177638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb437a3d1d44af%3A0x9c9f46adfc62d1eb!2sUniCesumar%20-%20Londrina!5e0!3m2!1spt-BR!2sbr!4v1777981365322!5m2!1spt-BR!2sbr" 
             className="w-full h-full border-0 rounded-[24px] filter contrast-125 grayscale-[20%] invert-[90%] hue-rotate-180" 
             allowFullScreen="" 
             loading="lazy" 
