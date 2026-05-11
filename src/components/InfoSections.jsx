@@ -2,26 +2,37 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, ChevronDown, Clock, ShieldAlert, Workflow, Zap } from 'lucide-react';
 
+// 1. IMPORTAÇÕES
+// (Certifique-se que as imagens estão na pasta src/assets/ com estes nomes EXATOS)
+import logoCaco from '../assets/Patrocinador1.jpg'; 
+import logoCantina from '../assets/Patrocinador2.jpg';
+import logoVitorio from '../assets/Patrocinador3.jpeg';
+
+// 2. USO CORRETO DAS VARIÁVEIS (Sem aspas e usando os nomes de cima)
 const sponsors = [
   { 
     name: "Caco. Alimentação", 
+    tier: "Start", 
     color: "from-surreal-cyan to-blue-600",
     shadow: "shadow-[0_0_60px_rgba(0,240,255,0.2)]",
-    logo: "/public/Patrocinador1.jpg" 
+    logo: logoCaco // ✅ CERTO: Usando a variável que importou na linha 8
   },
   { 
     name: "Cantina do Custódio", 
+    tier: "Pro", 
     color: "from-surreal-magenta to-red-600",
     shadow: "shadow-[0_0_60px_rgba(255,0,60,0.2)]",
-    logo: "/public/Patrocinador2.jpg" 
+    logo: logoCantina // ✅ CERTO: Usando a variável que importou na linha 9
   },
   { 
     name: "Vitorio's Restaurante", 
+    tier: "Enterprise", 
     color: "from-surreal-purple to-purple-800",
     shadow: "shadow-[0_0_60px_rgba(138,43,226,0.2)]",
-    logo: "/public/Patrocinador3.jpeg" 
+    logo: logoVitorio // ✅ CERTO: Usando a variável que importou na linha 10
   }
 ];
+
 
 export default function InfoSections() {
   const [openFaq, setOpenFaq] = useState(null);
