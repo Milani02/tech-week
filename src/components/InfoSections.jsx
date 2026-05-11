@@ -1,9 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, ChevronDown, Clock, ShieldAlert, Workflow } from 'lucide-react';
+import { MapPin, ChevronDown, Clock, ShieldAlert, Workflow, Zap } from 'lucide-react';
+
+const sponsors = [
+  { 
+    name: "Caco. Alimentação", 
+    color: "from-surreal-cyan to-blue-600",
+    shadow: "shadow-[0_0_60px_rgba(0,240,255,0.2)]",
+    logo: "/public/patrocinador1.jpg" 
+  },
+  { 
+    name: "Cantina do Custódio", 
+    color: "from-surreal-magenta to-red-600",
+    shadow: "shadow-[0_0_60px_rgba(255,0,60,0.2)]",
+    logo: "/public/patrocinador2.jpg" 
+  },
+  { 
+    name: "Vitorio's Restaurante", 
+    color: "from-surreal-purple to-purple-800",
+    shadow: "shadow-[0_0_60px_rgba(138,43,226,0.2)]",
+    logo: "/public/patrocinador3.jpeg" 
+  }
+];
 
 export default function InfoSections() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [currentSponsor, setCurrentSponsor] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSponsor((prev) => (prev + 1) % sponsors.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
 
   const schedule = [
     { time: "19:00", title: "Credenciamento e Abertura", icon: <Clock size={20} /> },
@@ -21,7 +50,7 @@ export default function InfoSections() {
   return (
     <div className="bg-surreal-bg text-white pb-32 relative overflow-hidden">
       
-      {/* Efeitos de luz de fundo para manter a consistência com o topo */}
+      {/* Luzes de Fundo */}
       <div className="absolute top-1/4 right-0 w-[30vw] h-[30vw] bg-surreal-cyan/10 rounded-full mix-blend-screen filter blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 left-0 w-[40vw] h-[40vw] bg-surreal-purple/10 rounded-full mix-blend-screen filter blur-[150px] pointer-events-none"></div>
 
@@ -106,7 +135,84 @@ export default function InfoSections() {
         </div>
       </section>
 
-      {/* MAPA / LOCALIZAÇÃO */}
+      {/* PATROCINADORES - DESTAQUE MÁXIMO NA LOGO */}
+      <section className="max-w-6xl mx-auto px-4 py-24 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-8"
+        >
+          <h2 className="text-4xl font-black text-white mb-4 flex justify-center items-center gap-3">
+            <Zap className="text-surreal-neon" size={32} /> PATROCINADORES
+          </h2>
+        </motion.div>
+
+        <div className="flex justify-center items-center h-[500px] perspective-[2000px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSponsor}
+              initial={{ opacity: 0, scale: 0.5, z: -500, rotateX: 20 }}
+              animate={{ opacity: 1, scale: 1, z: 0, rotateX: 0 }}
+              exit={{ opacity: 0, scale: 1.2, z: 200, filter: "blur(20px)" }}
+              transition={{ duration: 0.8, ease: "circOut" }}
+              className={`relative w-full max-w-2xl h-full flex flex-col justify-center items-center group`}
+            >
+              {/* Brilho de Fundo Dinâmico - Mais intenso */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${sponsors[currentSponsor].color} opacity-30 blur-[100px] group-hover:opacity-50 transition-opacity duration-1000`}></div>
+              
+              {/* LOGO GIGANTE E FLUTUANTE */}
+              <motion.div 
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-20 w-full flex flex-col items-center"
+              >
+                <div className="w-64 h-64 md:w-96 md:h-96 flex items-center justify-center p-4">
+                  <img 
+                    src={sponsors[currentSponsor].logo} 
+                    alt={`Logo ${sponsors[currentSponsor].name}`} 
+                    className="max-w-full max-h-full object-contain filter drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = `<div class="text-surreal-cyan font-mono text-xl text-center border-2 border-dashed border-surreal-cyan/30 p-10 rounded-full">LOGO:<br/>${sponsors[currentSponsor].name}</div>`;
+                    }}
+                  />
+                </div>
+
+                {/* Info Textual Subtil para não roubar a cena */}
+                <div className="mt-8 text-center">
+                  <span className={`px-6 py-1 rounded-full text-xs font-bold tracking-[0.3em] uppercase bg-white/5 border border-white/10 text-white/60 mb-4 block w-fit mx-auto`}>
+                    Cota {sponsors[currentSponsor].tier}
+                  </span>
+                  <h3 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase italic opacity-90">
+                    {sponsors[currentSponsor].name}
+                  </h3>
+                </div>
+              </motion.div>
+
+              {/* Elementos Decorativos de Fundo */}
+              <div className={`absolute -bottom-10 w-3/4 h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent blur-sm`}></div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        
+        {/* Navegação Dots */}
+        <div className="flex justify-center gap-6 mt-4">
+          {sponsors.map((_, index) => (
+            <button 
+              key={index}
+              onClick={() => setCurrentSponsor(index)}
+              className={`h-1.5 transition-all duration-700 rounded-full ${
+                currentSponsor === index 
+                  ? 'w-16 bg-surreal-cyan shadow-[0_0_20px_rgba(0,240,255,0.8)]' 
+                  : 'w-4 bg-white/10 hover:bg-white/30'
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* MAPA */}
       <section className="max-w-5xl mx-auto px-4 py-20 relative z-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -115,25 +221,18 @@ export default function InfoSections() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-black text-white mb-4 flex justify-center items-center gap-3">
-            <MapPin className="text-surreal-magenta" size={36} /> Ponto de Encontro
+            <MapPin className="text-surreal-magenta" size={36} /> Localização
           </h2>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="w-full h-[450px] glass-panel p-2 rounded-[32px] overflow-hidden shadow-[0_0_50px_rgba(138,43,226,0.15)] relative group"
+          className="w-full h-[450px] glass-panel p-2 rounded-[32px] overflow-hidden relative"
         >
-          {/* Borda neon animada no hover */}
-          <div className="absolute inset-0 bg-gradient-to-r from-surreal-cyan via-surreal-purple to-surreal-magenta opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"></div>
-          
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.3327064247605!2d-51.143334423921836!3d-23.303684452177638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eb437a3d1d44af%3A0x9c9f46adfc62d1eb!2sUniCesumar%20-%20Londrina!5e0!3m2!1spt-BR!2sbr!4v1777981365322!5m2!1spt-BR!2sbr" 
-            className="w-full h-full border-0 rounded-[24px] filter contrast-125 grayscale-[20%] invert-[90%] hue-rotate-180" 
+            className="w-full h-full border-0 rounded-[24px] filter invert-[90%] hue-rotate-180 contrast-125" 
             allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
+            loading="lazy"
           ></iframe>
         </motion.div>
       </section>
