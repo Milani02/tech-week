@@ -7,19 +7,19 @@ const sponsors = [
     name: "Caco. Alimentação", 
     color: "from-surreal-cyan to-blue-600",
     shadow: "shadow-[0_0_60px_rgba(0,240,255,0.2)]",
-    logo: "/public/patrocinador1.jpg" 
+    logo: "/public/Patrocinador1.jpg" 
   },
   { 
     name: "Cantina do Custódio", 
     color: "from-surreal-magenta to-red-600",
     shadow: "shadow-[0_0_60px_rgba(255,0,60,0.2)]",
-    logo: "/public/patrocinador2.jpg" 
+    logo: "/public/Patrocinador2.jpg" 
   },
   { 
     name: "Vitorio's Restaurante", 
     color: "from-surreal-purple to-purple-800",
     shadow: "shadow-[0_0_60px_rgba(138,43,226,0.2)]",
-    logo: "/public/patrocinador3.jpeg" 
+    logo: "/public/Patrocinador3.jpeg" 
   }
 ];
 
