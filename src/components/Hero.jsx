@@ -83,7 +83,7 @@ export default function Hero() {
         >
           <span className="block text-white drop-shadow-2xl">TECH</span>
           <span className="block text-transparent bg-clip-text bg-surreal-gradient animate-gradient-x pb-2">
-            WEEK
+            WEEK II
           </span>
         </motion.h1>
 
@@ -150,7 +150,7 @@ export default function Hero() {
             className="relative px-10 py-5 bg-white text-black rounded-full font-bold text-lg overflow-hidden group transition-all duration-300 shadow-[0_0_40px_rgba(0,240,255,0.4)]"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Iniciar Conexão <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+              Inscrição <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
             </span>
           </motion.button>
           

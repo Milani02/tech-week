@@ -54,7 +54,7 @@ export default function Registration() {
             <h2 className="text-4xl font-black text-white tracking-tight leading-none mb-3">
               Garanta sua inscrição
             </h2>
-            <p className="text-gray-400 max-w-lg mx-auto">Escolha o seu ponto de entrada para a Tech Week 2026. A conexão com o futuro começa aqui.</p>
+            <p className="text-gray-400 max-w-lg mx-auto">Escolha o seu ponto de entrada para a Tech Week II 2026. A conexão com o futuro começa aqui.</p>
           </div>
 
           {/* Sistema de Abas (Tabs) Surreal */}
