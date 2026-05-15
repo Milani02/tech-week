@@ -107,7 +107,8 @@ export default function SpeakersCarousel() {
                 <div className="relative mb-6">
                   <div className={`absolute -inset-1 bg-gradient-to-r ${speaker.color} rounded-2xl opacity-20 blur group-hover:opacity-40 transition duration-500`}></div>
                   <div className="relative h-64 overflow-hidden rounded-2xl border border-white/5">
-                    <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" />
+                    {/* AQUI ESTÁ A ALTERAÇÃO: Removidas as classes "grayscale" e "group-hover:grayscale-0" */}
+                    <img src={speaker.image} alt={speaker.name} className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100" />
                   </div>
                 </div>
                 <div className="flex-grow">
